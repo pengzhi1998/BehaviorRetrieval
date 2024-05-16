@@ -4,6 +4,7 @@ unused_runs/
 tb/
 datasets/
 expert_models/
+bc_trained_models/
 events.out*
 .idea
 *.gif

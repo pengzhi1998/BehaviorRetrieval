@@ -85,13 +85,13 @@ class SequenceDataset(torch.utils.data.Dataset):
                 demonstrations to load
 
             load_next_obs (bool): whether to load next_obs from the dataset
-            
+
             priority (bool): whether this dataset will be loading corrections only (for HG-DAGGER setup only)
-            
-            weighting (bool): enable / disable BehaviorRetrieval. 
-            
-            num_samples (int): how many samples you want to use from the dataset 
-            
+
+            weighting (bool): enable / disable BehaviorRetrieval.
+
+            num_samples (int): how many samples you want to use from the dataset
+
         """
         super(SequenceDataset, self).__init__()
 
@@ -776,7 +776,7 @@ class SequenceDataset(torch.utils.data.Dataset):
             if self.hdf5_normalize_obs:
                 meta["next_obs"] = ObsUtils.normalize_obs(meta["next_obs"], obs_normalization_stats=self.obs_normalization_stats)
 
-        # for LMP experiments only 
+        # for LMP experiments only
         if min_demo_length < 40:
             SAMPLE_LENGTH = 20
         elif min_demo_length < 160:
@@ -855,7 +855,7 @@ class SequenceDataset(torch.utils.data.Dataset):
 
         seq = TensorUtils.pad_sequence(seq, padding=(seq_begin_pad, seq_end_pad), pad_same=True)
         pad_mask = np.array([0] * seq_begin_pad + [1] * (seq_end_index - seq_begin_index) + [0] * seq_end_pad)
-        pad_mask = pad_mask[:, None].astype(np.bool)
+        pad_mask = pad_mask[:, None].astype(np.bool_)
 
         return seq, pad_mask
 
